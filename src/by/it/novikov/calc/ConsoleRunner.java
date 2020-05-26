@@ -2,28 +2,23 @@ package by.it.novikov.calc;
 
 import java.util.Scanner;
 
-class ConsoleRunner {
+public class ConsoleRunner {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Parser parser = new Parser();
+        Scanner scanner = new Scanner(System.in);
+        Parser parser=new Parser();
         Printer printer = new Printer();
-        while (true){
-            String expr = sc.nextLine();
-            if (expr.equals("end")){
+        for (; ; ) {
+            String expression = scanner.nextLine();
+            if (expression.equals("end")) {
                 break;
             }
-            else if (expr.equals("printvar")){
-                Var.printvar();
-            }
-
             try {
-                Var var = parser.calc(expr);
+                Var var = parser.calc(expression);
                 printer.print(var);
             } catch (CalcException e) {
                 System.out.println(e.getMessage());
             }
-
         }
-
     }
+
 }
