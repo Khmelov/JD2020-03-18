@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 @SuppressWarnings("all")
 
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
-public class Testing01 {
+public class Test_jd01_01 {
 
 
     @Test(timeout = 1500)
@@ -68,7 +68,7 @@ public class Testing01 {
 
     public void testTaskC3() throws Exception {
         run("75\n").include("29.51\n");
-        Testing01 t = run("100\n").include("39.35\n");
+        Test_jd01_01 t = run("100\n").include("39.35\n");
         Method m = checkMethod(t.aClass.getSimpleName(), "getWeight", int.class);
         assertEquals((Double) m.invoke(null, 100), 39.35, 1e-100);
         assertEquals((Double) m.invoke(null, 75), 29.51, 1e-100);
@@ -139,11 +139,11 @@ public class Testing01 {
 
     //метод находит и создает класс для тестирования
     //по имени вызывающего его метода, testTaskA1 будет работать с TaskA1
-    private static Testing01 run(String in) {
+    private static Test_jd01_01 run(String in) {
         return run(in, true);
     }
 
-    private static Testing01 run(String in, boolean runMain) {
+    private static Test_jd01_01 run(String in, boolean runMain) {
         Throwable t = new Throwable();
         StackTraceElement trace[] = t.getStackTrace();
         StackTraceElement element;
@@ -162,11 +162,11 @@ public class Testing01 {
         System.out.println("Старт теста для " + clName);
         if (!in.isEmpty()) System.out.println("input:" + in);
         System.out.println("---------------------------------------------");
-        return new Testing01(clName, in, runMain);
+        return new Test_jd01_01(clName, in, runMain);
     }
 
     //-------------------------------  тест ----------------------------------------------------------
-    public Testing01() {
+    public Test_jd01_01() {
         //Конструктор тестов
     }
 
@@ -178,7 +178,7 @@ public class Testing01 {
     private StringWriter strOut = new StringWriter(); //накопитель строки вывода
 
     //Основной конструктор тестов
-    private Testing01(String className, String in, boolean runMain) {
+    private Test_jd01_01(String className, String in, boolean runMain) {
         //this.className = className;
         aClass = null;
         try {
@@ -204,18 +204,18 @@ public class Testing01 {
     }
 
     //проверка вывода
-    private Testing01 is(String str) {
+    private Test_jd01_01 is(String str) {
         assertTrue("ERROR:Ожидается такой вывод:\n<---начало---->\n" + str + "<---конец--->",
                 strOut.toString().equals(str));
         return this;
     }
 
-    private Testing01 include(String str) {
+    private Test_jd01_01 include(String str) {
         assertTrue("ERROR:Строка не найдена: " + str + "\n", strOut.toString().contains(str));
         return this;
     }
 
-    private Testing01 exclude(String str) {
+    private Test_jd01_01 exclude(String str) {
         assertTrue("ERROR:Лишние данные в выводе: " + str + "\n", !strOut.toString().contains(str));
         return this;
     }
