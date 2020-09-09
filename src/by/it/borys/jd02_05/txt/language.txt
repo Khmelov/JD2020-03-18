@@ -1,5 +1,0 @@
-date=MM/dd/yyyy
-message.hello=Hello!
-message.question=How are you?
-user.firstName=Valery
-user.lastName=Borys

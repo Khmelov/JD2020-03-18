@@ -1,4 +1,0 @@
-message.hello=Hello
-user.firstName=Sergey
-user.lastName=Verbitsky
-system.dateFormat=yyyy-mm-dd
